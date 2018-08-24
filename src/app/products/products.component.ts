@@ -10,7 +10,7 @@ export class ProductsComponent implements OnInit {
   pageTitle = 'Product List';
   imageWidth = 50;
   imageNumber = 2;
-  showImage = false;
+  showImage = true;
   _listFilter: string;
   get listFilter(): string {
     return this._listFilter;
@@ -74,7 +74,7 @@ export class ProductsComponent implements OnInit {
 
   constructor() {
     this.filteredProducts = this.products;
-    this.listFilter = 'cart';
+    // this.listFilter = 'cart';
    }
 
   performFilter(filterBy: string): IProduct[] {
@@ -84,8 +84,8 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('On init');
   }
+  
   toggleImage(): void {
     this.showImage = !this.showImage;
   }
