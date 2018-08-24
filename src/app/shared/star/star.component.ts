@@ -8,21 +8,20 @@ import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core
 
 export class StarComponent implements OnChanges {
 
-  
-  @Input() rating:number;
+  @Input() rating: number;
   starWidth: number;
-  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  @Output() ratingClicked: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnChanges(): void {
     console.log(this.rating);
-    this.starWidth = (this.rating*75)/5;
-    console.log("width",this.starWidth);
+    this.starWidth = (this.rating * 75) / 5;
+    console.log( 'width' , this.starWidth);
   }
 
   onClick(): void {
     console.log('clicked');
-    this.notify.emit("Clicked!")
+    this.ratingClicked.emit(`Your rating ${this.rating} is clicked`);
   }
 }
