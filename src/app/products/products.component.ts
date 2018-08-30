@@ -37,12 +37,11 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.productsService.getProducts().subscribe(
       products => {
-        this.products=products;
+        this.products = products;
         this.filteredProducts = this.products;
       },
-      error => this.errorMessage=<any>error
+      error => this.errorMessage = <any>error
     );
-    
   }
   toggleImage(): void {
     this.showImage = !this.showImage;

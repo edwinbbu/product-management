@@ -9,6 +9,7 @@ import { StarComponent } from './shared/star/star.component';
 import { HttpClientModule} from '@angular/common/http';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { WelcomeComponent } from './home/welcome.component';
+import { ProductDetailsGuard } from './product-details/product-details.guard';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,10 @@ import { WelcomeComponent } from './home/welcome.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'products', component: ProductsComponent},
-      { path: 'products/:id', component: ProductDetailsComponent},
-      { path: 'welcome' ,component:WelcomeComponent},
-      { path: '', redirectTo: 'welcome', pathMatch:'full'},
-      { path: '**',redirectTo: 'welcome', pathMatch:'full'}
+      { path: 'products/:id', canActivate: [ProductDetailsGuard], component: ProductDetailsComponent},
+      { path: 'welcome' , component: WelcomeComponent},
+      { path: '', redirectTo: 'welcome', pathMatch: 'full'},
+      { path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ])
   ],
   bootstrap: [AppComponent]
