@@ -10,7 +10,7 @@ import { ProductsService } from '../products/products.service';
 export class ProductDetailsComponent implements OnInit {
   pageTitle = 'Product Details';
   product: IProduct;
-  error;
+  errorMessage;
   constructor(private route: ActivatedRoute, private router: Router, private productservice: ProductsService) {
    }
 
@@ -22,11 +22,11 @@ export class ProductDetailsComponent implements OnInit {
           this.product = product;
         },
         error => {
-          this.error = error;
+          this.errorMessage = <any>error;
         }
       );
     }
-    
+
   }
   onBack() {
     this.router.navigate(['/products']);
